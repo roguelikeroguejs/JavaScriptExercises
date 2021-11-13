@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Table of Factorials Demo</title>
+    <!-- Tells the browser to use the css file as a guide-->
+    <link rel="stylesheet" type="text/css"
+                href="fact.css">
+</head>
+<body>
+    <!--Tells the browser we want to run our js file-->
+    <script src=fact.js></script>
+    <h1>JavaScript Table of Factorials Demo Page</h1>
+    <h2>Factorial Table</h2>
+
+    <form id="inform">
+        Enter an upper bound for the factorial table:<br>
+        <input type="text" id="textin">
+
+    </form>
+
+    <br>
+    <!--On button click runs the factTable function in our js file-->
+    <button id="run_button" onclick="factTable(inform)">Run</button>
+    <br><br>
+    The factorial table:<br>
+    <p id="textout"></p>
+
+    <br>
+</body>

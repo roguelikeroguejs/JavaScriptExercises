@@ -1,0 +1,11 @@
+body {
+    background-color: lightblue;
+}
+#run_button {
+    background-color: lightgreen;
+    color: white;
+}
+#textout {
+    color: red;
+    font-size: large;
+}
