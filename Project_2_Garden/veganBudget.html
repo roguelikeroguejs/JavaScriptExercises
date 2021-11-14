@@ -2,11 +2,27 @@
 <html>
     <head>
         <title>Project 2 Garden</title>
-        <h1>Vegan Budget</h1>
-
+        <link rel="stylesheet" type="text/css" href="veganBudget.css">
     </head>
     <body>
-        <button onclick="">Total Cost</button>
+        <h1>Vegan Budget</h1>
+
+        The Garden:<br>
+        <p>Veggies Cost Quantity</p>
+        <p id="gardenRow"></p>
+        
+
+        <form id="inputForm">
+            Enter the budget for your garden as a number:<br>
+            <input type="text" id="budgetInput">
+            
+        </form>
+        <br><br>
+        <button id="total_button">Total Cost</button>
+
+        <br><br>
+        <p id="textout"></p>
+    
         <script src="veganBudget.js"> </script>
     </body>
 </html>
