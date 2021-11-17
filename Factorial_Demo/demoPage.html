@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="fact.css">
+        <title>JavaScript Demo Page</title>
+    </head>
+    <body>
+        
+        <h1>JavaScript Demo Page</h1>
+        <h2>Factorial Table</h2>
+        <p id="today">PLACE DATE HERE</p>
+        <form id="inform1">
+            Enter an upper bound for the factorial table:<br>
+            <input type="text" id="textin1"> 
+        </form>
+
+        <br>
+        <button id="run_button1">Run</button>
+
+        <br><br>
+        The Factorial Table:<br>
+        <p id="textout1"></p>
+
+
+        <br>
+        <h2>Label Demo</h2>
+        <button onclick="findLowRow()">Find Low Row</button>
+
+        <br><br>
+        The result:<br>
+        <p id="textout2"></p> 
+        <br>
+
+        <h2>Find Square</h2>
+        <form id="inform2"> 
+            Enter a number between 1 and 10:<br>
+            <input type="text" id="textin2">
+        </form>
+
+        <br>
+        <button id="run_button2" onclick="findSquare(inform2)">Run</button>
+
+        <br><br>
+        The Square of you number is:<br>
+        <p id="textout3"></p>
+
+        <br>
+        <script src=setcolor.js></script>
+        <script src=label.js></script>
+        <script src=fact.js></script>
+        <script src=square.js></script>
+    </body>
+</html>
