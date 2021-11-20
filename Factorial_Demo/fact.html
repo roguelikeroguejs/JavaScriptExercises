@@ -20,10 +20,21 @@
 
     <br>
     <!--On button click runs the factTable function in our js file-->
-    <button id="run_button" onclick="factTable(inform)">Run</button>
+    <button id="run_button" 
+        onmousedown="colorSwap('lightblue')" 
+        onmouseover="colorSwap('red')" 
+        onmouseleave="colorSwap('lightgreen')" 
+        onclick="factTable(inform)">Run</button>
     <br><br>
     The factorial table:<br>
     <p id="textout"></p>
 
     <br>
+    <script>
+        document.getElementById("run_button").addEventListener
+            ("mouseover", () => colorSwap());
+            function colorSwap(colorName){
+                var button = document.getElementById("run_button").style.backgroundColor = colorName;
+            }
+    </script>
 </body>

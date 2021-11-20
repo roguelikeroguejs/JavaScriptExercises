@@ -1,3 +1,4 @@
+
 function factTable(formID) {
     //Get the limit value from the user 
     var limit = formID.textin.value;
