@@ -5,6 +5,12 @@
 //delete a property 
 //delete camera.imageMode;
 
+
+
+
+
+
+
 //Various Dice rolls TODO make a diceroller.js file 
 
 function attackRoll (attackMod){
@@ -169,6 +175,15 @@ class Mech {
 
 //document.write(damageLocation(rollD6(),0) + "<br>");
 
+//Calculate Carry Over Damage
+function carryOverDamageCalculator(damageRoll, battleMechPartValue){
+    return(damageRoll - battleMechPartValue);
+}
+
+function applyDamage(damage, battleMechPartValue){
+    return(battleMechPartValue-= damage);
+}
+
 
 //Determine where an attack hits on a mech 
 
@@ -201,15 +216,14 @@ function damageLocation (diceRoll, facing, battleMech, damageRoll){
         switch (diceRoll){
             case 0:
                 if(battleMech.frontHeadArmor > damageRoll){
-                    battleMech.frontHeadArmor -= damageRoll;
+                    applyDamage(damageRoll, battleMech.frontHeadArmor);
                 } else{
-                    carryOverDmg = damageRoll - battleMech.frontHeadArmor;
+                    carryOverDmg = carryOverDamageCalculator(damageRoll, battleMech.frontHeadArmor);
                     battleMech.frontHeadArmor = 0;
                     document.write("FRONT HEAD ARMOR DESTROYED!!" + "<br>");
                     if(battleMech.internalHead > carryOverDmg){
-                        battleMech.internalHead -= carryOverDmg;
+                        applyDamage(carryOverDmg, battleMech.internalHead);
                         document.write("Damage to "+internalLocation[diceRoll]+ " reported. INTERNAL DAMAGE TO COCKPIT!!" + "<br>");
-
                     }else{
                         battleMech.internalHead = 0;
                         document.write("PILOT HAS BEEN KILLED!!" + "<br>");
@@ -219,13 +233,13 @@ function damageLocation (diceRoll, facing, battleMech, damageRoll){
                 break;
             case 1:
                 if(battleMech.frontArmArmorL > damageRoll){
-                    battleMech.frontArmArmorL -= damageRoll;
+                    applyDamage(carryOverDmg, battleMech.frontArmArmorL);
                 } else{
-                    carryOverDmg = damageRoll - battleMech.frontArmArmorL;
+                    carryOverDmg = carryOverDamageCalculator(damageRoll, battleMech.frontArmArmorL);
                     battleMech.frontArmArmorL = 0;
                     document.write("FRONT LEFT ARM ARMOR DESTROYED!!" + "<br>");
                     if(battleMech.internalArmL > carryOverDmg){
-                        battleMech.internalArmL -= carryOverDmg;
+                        applyDamage(carryOverDmg, battleMech.internalArmL);
                         document.write("Damage to "+internalLocation[diceRoll]+ " reported. INTERNAL DAMAGE TO LEFT ARM!!" + "<br>");
                     }else{
                         battleMech.internalArmL = 0;
@@ -237,13 +251,13 @@ function damageLocation (diceRoll, facing, battleMech, damageRoll){
                 break;
             case 2:
                 if(battleMech.frontArmArmorR > damageRoll){
-                    battleMech.frontArmArmorR -= damageRoll;
+                    applyDamage(carryOverDmg, battleMech.frontArmArmorR);
                 }else{
-                    carryOverDmg = damageRoll - battleMech.frontArmArmorR;
+                    carryOverDmg = carryOverDamageCalculator(damageRoll, battleMech.frontArmArmorR);
                     battleMech.frontArmArmorR = 0;
                     document.write("FRONT RIGHT ARM ARMOR DESTROYED!!" + "<br>");
                     if(battleMech.internalArmR > carryOverDmg){
-                        battleMech.internalArmR -= carryOverDmg;
+                        applyDamage(carryOverDmg, battleMech.internalArmR);
                         document.write("Damage to "+internalLocation[diceRoll]+ " reported. INTERNAL DAMAGE TO RIGHT ARM!!" + "<br>");
                     }else{
                         battleMech.internalArmR = 0;
@@ -255,13 +269,13 @@ function damageLocation (diceRoll, facing, battleMech, damageRoll){
                 break;
             case 3:
                 if(battleMech.frontTorsoArmor > damageRoll){
-                    battleMech.frontTorsoArmor -= damageRoll;
+                    applyDamage(carryOverDmg, battleMech.frontTorsoArmor);
                 }else{
-                    carryOverDmg = damageRoll - battleMech.frontTorsoArmor;
+                    carryOverDmg = carryOverDamageCalculator(damageRoll, battleMech.frontTorsoArmor);
                     battleMech.frontTorsoArmor = 0;
                     document.write("FRONT TORSO ARMOR DESTROYED!!" + "<br>");
                     if(battleMech.internalTorso > carryOverDmg){
-                        battleMech.internalTorso -= carryOverDmg;
+                        applyDamage(carryOverDmg, battleMech.internalTorso);
                         document.write("Damage to "+internalLocation[diceRoll]+ " reported. INTERNAL DAMAGE TO TORSO!!" + "<br>");
                     }else{
                         battleMech.internalTorso = 0;
@@ -273,13 +287,13 @@ function damageLocation (diceRoll, facing, battleMech, damageRoll){
                 break;
             case 4:
                 if(battleMech.frontLegArmorL > damageRoll){
-                    battleMech.frontLegArmorL -= damageRoll;
+                    applyDamage(carryOverDmg, battleMech.frontLegArmorL);
                 }else{
-                    carryOverDmg = damageRoll - battleMech.frontLegArmorL;
+                    carryOverDmg = carryOverDamageCalculator(damageRoll, battleMech.frontLegArmorL);
                     battleMech.frontLegArmorL = 0;
                     document.write("FRONT LEFT LEG ARMOR DESTROYED!!" + "<br>");
                     if(battleMech.internalLegL > carryOverDmg){
-                        battleMech.internalLegL -= carryOverDmg;
+                        applyDamage(carryOverDmg, battleMech.internalLegL);
                         document.write("Damage to "+internalLocation[diceRoll]+ " reported. INTERNAL DAMAGE TO LEFT LEG!!" + "<br>");
                     }else{
                         battleMech.internalLegL = 0;
@@ -297,13 +311,13 @@ function damageLocation (diceRoll, facing, battleMech, damageRoll){
                 break;  
             case 5:
                 if(battleMech.frontLegArmorR > damageRoll){
-                    battleMech.frontLegArmorR -= damageRoll;
+                    applyDamage(carryOverDmg, battleMech.frontLegArmorR);
                 }else{
-                    carryOverDmg = damageRoll - battleMech.frontLegArmorR;
+                    carryOverDmg = carryOverDamageCalculator(damageRoll, battleMech.frontLegArmorR);
                     battleMech.frontLegArmorR = 0;
                     document.write("FRONT RIGHT LEG ARMOR DESTROYED!!" + "<br>");
                     if(battleMech.internalLegR > carryOverDmg){
-                        battleMech.internalLegR -= carryOverDmg;
+                        applyDamage(carryOverDmg, battleMech.internalLegR);
                         document.write("Damage to "+internalLocation[diceRoll]+ " reported. INTERNAL DAMAGE TO RIGHT LEG!!" + "<br>");
                     }else{
                         battleMech.internalLegR = 0;
@@ -355,23 +369,6 @@ function damageLocation (diceRoll, facing, battleMech, damageRoll){
 };
 
 
-
-// Example Creating a Battlemech object from a constructor, use of new is frowned upon as it can create issues in JS
-const Zaku = new Mech("Zaku II",10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10);
-
-// Creating a BattleMech Prototype from the battleMech Object Literal
-var Gundam = Object.create(battleMech);
-Gundam.mechName = "Gundam";
-
-
-document.write(mechHitModel(Gundam, attackRoll(15), damageRoll(rollD12(),20))+ "<br>");
-document.write(damageLocation(0, 0, Gundam, 4) + "<br><br>");
-
-//document.write(mechHitModel(Gundam, attackRoll(6), damageRoll(rollD12(),5))+ "<br>");
-//document.write(damageLocation(rollD6(), 0, Gundam, 12) + "<br><br>");
-document.write(damageReadout(Gundam));
-
-
 function damageReadout (battleMech) {
     for (var prop in battleMech){
         document.write( prop + ": " + battleMech[prop] + "<br><br>");
@@ -404,3 +401,18 @@ function mechHitModel (battleMech, attackRoll, damageRoll){
 
 
 
+// Example Creating a Battlemech object from a constructor, use of new is frowned upon as it can create issues in JS
+const Zaku = new Mech("Zaku II",10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10);
+
+// Creating a BattleMech Prototype from the battleMech Object Literal
+var Gundam = Object.create(battleMech);
+Gundam.mechName = "Gundam";
+
+
+//document.write(mechHitModel(Gundam, attackRoll(15), damageRoll(rollD12(),20))+ "<br>");
+
+
+//document.write(mechHitModel(Gundam, attackRoll(6), damageRoll(rollD12(),5))+ "<br>");
+//document.write(damageLocation(rollD6(), 0, Gundam, 12) + "<br><br>");
+document.write(damageLocation(0, 0, Gundam, 21) + "<br><br>");
+document.write(damageReadout(Gundam));
